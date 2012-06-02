@@ -1,9 +1,6 @@
 require "fake-ajax-server/version"
 
-module Fake
-  module Ajax
-    module Server
-      # Your code goes here...
-    end
+module FakeAjaxServer
+  class Engine < Rails::Engine
   end
 end
