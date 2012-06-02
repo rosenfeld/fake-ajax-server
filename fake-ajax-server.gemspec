@@ -4,9 +4,9 @@ require File.expand_path('../lib/fake-ajax-server/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Rodrigo Rosenfeld Rosas"]
   gem.email         = ["rr.rosas@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{Fake your AJAX requests in your tests/specs.}
+  gem.summary       = %q{Fake AJAX Server for jQuery requests}
+  gem.homepage      = "http://github.com/rosenfeld/fake-ajax-server"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
