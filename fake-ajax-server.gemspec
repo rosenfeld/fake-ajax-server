@@ -17,4 +17,5 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'jquery-rails'
   gem.add_dependency 'sinon-rails'
+  gem.add_dependency 'coffee-rails'
 end
