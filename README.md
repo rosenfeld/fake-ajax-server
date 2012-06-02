@@ -37,6 +37,25 @@ fakeAjaxServer = new FakeAjaxServer (url, settings)=>
   return if handled
   console.log arguments
   throw "Unexpected AJAX call: #{settings.url}"
+
+fakeAjaxServer.start()
+$.getJSON '/products', (data)-> console.log data
+expect(fakeAjaxServer.ajaxSettings().url).toBe '/products'/products
+fakeAjaxServer.processNextRequest()
+$.post '/products', name: 'Drums', ((data)-> console.log data.id), 'json'
+failed = false
+$.post('/products/1/delete').fail -> failed = true
+
+expect(fakeAjaxServer.ajaxSettings(0).data.name).toBe 'Drums' # 0 is used by default
+expect(fakeAjaxServer.ajaxSettings(1).url).toBe '/products/1/delete'
+expect(fakeAjaxServer.ajaxResponse(1).fail).not.toBeUndefined()
+fakeAjaxServer.ajaxResponse(1).fail()
+expect(failed).toBe true
+fakeAjaxServer.ignoreNextRequest() # ignores POST '/products'
+# alternatively use fakeAjaxServer.ignoreAllRequests()
+fakeAjaxServer.processAllRequests() # would be the same as processNextRequest in this case
+
+fakeAjaxServer.stop() # undo $.ajax stubbing, restoring the original method
 ```
 
 ## Contributing
