@@ -14,4 +14,7 @@ Gem::Specification.new do |gem|
   gem.name          = "fake-ajax-server"
   gem.require_paths = ["lib"]
   gem.version       = Fake::Ajax::Server::VERSION
+
+  gem.add_dependency 'jquery-rails'
+  gem.add_dependency 'sinon-rails'
 end
