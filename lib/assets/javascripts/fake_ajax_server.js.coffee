@@ -21,6 +21,7 @@
 
   createFakeJqXHR: ->
     xhr = jQuery.Deferred()
+    xhr.abort = ->
     (xhr[m] = (->) for m in ['error', 'success', 'complete']) if @options.legacySupport
     sinon.stub xhr, m, (-> xhr) for m, f of xhr when typeof f is 'function'
     xhr
